@@ -1,0 +1,129 @@
+{% extends 'users/base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       /* General Styles */
+body {
+    background-color: #c1cac6; /* Dark background for a modern look */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Clean and modern font */
+    color: #e0e0e0; /* Light text color for contrast */
+    line-height: 1.6;
+}
+
+a {
+    font-size: 16px; /* Slightly larger for better readability */
+    color: #4a90e2; /* Brighter color for links */
+    text-decoration: none; /* Remove underline */
+}
+
+a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+/* Heading Styles */
+h2 {
+    text-align: center;
+    color: #f0f0f0;
+    margin-top: 20px;
+    font-size: 2em; /* Larger heading for emphasis */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Table Styles */
+table {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: linear-gradient(45deg, #2a2a2a, #333333); /* Dark gradient background */
+    border: 1px solid #444444;
+    border-radius: 12px; /* More rounded corners */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); /* Stronger shadow for a 3D effect */
+    overflow: hidden; /* Ensure corners are rounded */
+}
+
+table th,
+table td {
+    border: 1px solid #555555;
+    padding: 12px;
+    text-align: center;
+    font-size: 14px;
+    background: linear-gradient(135deg, #2e2e2e, #3e3e3e); /* Subtle gradient for cells */
+    color: #dcdcdc; /* Light color for text in cells */
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+table th {
+    background: linear-gradient(135deg, #6a1b1a, #b71c1c); /* Red gradient for headers */
+    color: #ffffff;
+    font-weight: bold;
+    position: relative;
+}
+
+table th::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    background: linear-gradient(135deg, #8e2e2e, #5e0f0f, #424242); /* Outer gradient effect */
+    border-radius: 12px;
+    z-index: -1;
+}
+
+table tr:nth-child(even) {
+    background-color: #2a2a2a; /* Darker background for even rows */
+}
+
+table tr:hover {
+    background-color: #424242; /* Hover effect */
+    transition: background-color 0.3s ease;
+    transform: translateY(-1px); /* Slight lift on hover */
+}
+ 
+    </style>
+</head><br><br>
+<body>
+    <div class="container">
+        <h2 style="color: rgb(7, 7, 7);">Eelectric Vechicle Battery Health</h2>
+        
+
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <tr>
+                    <tr>
+                        <th>Current</th>
+                        <th>Voltage</th>
+                        <th>Speed</th> 
+                        <th>Temperature</th> 
+                        <th>Range</th> 
+                        <th>SOC</th> 
+                        <th>Output</th>
+                    </tr>
+                    {% for record in data %}
+                    <tr>
+                        <td>{{ record.Current }}</td>
+                        <td>{{ record.Voltage }}</td>
+                        <td>{{ record.Speed }}</td>
+                        <td>{{ record.Temperature }}</td>
+                        <td>{{ record.Range }}</td>
+                        <td>{{ record.SOC }}</td>
+                        <td>{{ record.Label }}</td>
+                    </tr>
+                {% endfor %}
+             </table>
+        </div>
+    </div>
+
+        
+    
+</body>
+</html>
+
+{% endblock content %}
